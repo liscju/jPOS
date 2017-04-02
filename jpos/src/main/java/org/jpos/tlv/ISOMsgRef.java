@@ -130,7 +130,7 @@ public class ISOMsgRef {
 
 
         @Override
-        public byte[] getBytes() throws ISOException {
+        public byte[] getBytes() throws IllegalStateException {
             return delegate.getBytes();
         }
 

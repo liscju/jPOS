@@ -88,10 +88,10 @@ public abstract class ISOComponent implements Cloneable {
     /**
      * get Value as bytes (when possible)
      * @return byte[] representing this field
-     * @exception ISOException
+     * @exception IllegalStateException when object is composite
      */
-    public byte[] getBytes() throws ISOException {
-        throw new ISOException ("N/A in Composite");
+    public byte[] getBytes() throws IllegalStateException {
+        throw new IllegalStateException ("N/A in Composite");
     }
     /**
      * a Composite must override this function
