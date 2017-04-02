@@ -82,7 +82,7 @@ public class ISOTaggedField extends ISOComponent {
 
 
     @Override
-    public void unset(final int fldno) throws ISOException {
+    public void unset(final int fldno) throws IllegalStateException {
         delegate.unset(fldno);
     }
 

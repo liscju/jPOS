@@ -50,10 +50,10 @@ public abstract class ISOComponent implements Cloneable {
     /**
      * Unset a field
      * @param fldno - the field number
-     * @exception ISOException
+     * @exception IllegalStateException when object is leaf
      */
-    public void unset (int fldno) throws ISOException {
-        throw new ISOException ("Can't remove from Leaf");
+    public void unset (int fldno) throws IllegalStateException {
+        throw new IllegalStateException ("Can't remove from Leaf");
     }
     /**
      * In order to interchange <b>Composites</b> and <b>Leafs</b> we use
