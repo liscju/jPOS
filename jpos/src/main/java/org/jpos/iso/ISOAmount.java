@@ -57,16 +57,21 @@ public class ISOAmount
     public Object getKey() {
         return fieldNumber;
     }
-    public Object getValue() throws ISOException {
+    public Object getValue() throws IllegalStateException {
         if (value == null) {
-            StringBuilder sb = new StringBuilder();
-            sb.append (ISOUtil.zeropad (Integer.toString(currencyCode), 3));
-            sb.append (Integer.toString (amount.scale()));
-            sb.append (
-                ISOUtil.zeropad (
-                    amount.movePointRight(amount.scale()).toString(),12
-                )
-            );
+            StringBuilder sb = null;
+            try {
+                sb = new StringBuilder();
+                sb.append (ISOUtil.zeropad (Integer.toString(currencyCode), 3));
+                sb.append (Integer.toString (amount.scale()));
+                sb.append (
+                    ISOUtil.zeropad (
+                        amount.movePointRight(amount.scale()).toString(),12
+                    )
+                );
+            } catch (ISOException e) {
+                throw new IllegalStateException(e);
+            }
             value = sb.toString();
         }
         return value;
@@ -144,7 +149,7 @@ public class ISOAmount
         out.writeShort (fieldNumber);
         try {
             out.writeUTF ((String) getValue());
-        } catch (ISOException e) {
+        } catch (IllegalStateException e) {
             throw new IOException (e);
         }
     }

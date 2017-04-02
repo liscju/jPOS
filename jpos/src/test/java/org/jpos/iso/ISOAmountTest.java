@@ -137,18 +137,18 @@ public class ISOAmountTest {
     }
 
     @Test
-    public void testBadWriteAttemptISOException() throws IOException {
+    public void testBadWriteAttemptISOException() throws IllegalStateException {
         iSOAmount = new ISOAmount() {
             @Override
-            public Object getValue() throws ISOException {
-                throw new ISOException("boo!");
+            public Object getValue() throws IllegalStateException {
+                throw new IllegalStateException("boo!");
             }
         };
         ObjectOutput oo = mock(ObjectOutput.class);
         try {
             iSOAmount.writeExternal(oo);
         } catch (IOException ioe) {
-            assertThat(ioe.getMessage(), is("org.jpos.iso.ISOException: boo!"));
+            assertThat(ioe.getMessage(), is("java.lang.IllegalStateException: boo!"));
         }
     }
 

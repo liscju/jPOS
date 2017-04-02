@@ -104,7 +104,7 @@ public class ISOTaggedField extends ISOComponent {
 
 
     @Override
-    public Object getValue() throws ISOException {
+    public Object getValue() throws IllegalStateException {
         return delegate.getValue();
     }
 

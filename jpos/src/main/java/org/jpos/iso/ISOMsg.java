@@ -538,11 +538,7 @@ public class ISOMsg extends ISOComponent
      */
     public Object getValue(int fldno) {
         ISOComponent c = getComponent(fldno);
-        try {
-            return c != null ? c.getValue() : null;
-        } catch (ISOException ex) {
-            return null; //never happens for the given arguments of getValue method
-        }
+        return c != null ? c.getValue() : null;
     }
     /**
      * Return the object value associated with the given field path
