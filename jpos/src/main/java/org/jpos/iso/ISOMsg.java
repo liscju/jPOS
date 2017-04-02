@@ -839,10 +839,10 @@ public class ISOMsg extends ISOComponent
         return s.toString();
     }
     @Override
-    public Object getKey() throws ISOException {
+    public Object getKey() throws IllegalStateException {
         if (fieldNumber != -1)
             return fieldNumber;
-        throw new ISOException ("This is not a subField");
+        throw new IllegalStateException ("This is not a subField");
     }
     @Override
     public Object getValue() {

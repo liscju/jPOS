@@ -248,9 +248,9 @@ public class ISOMsg2Test {
         try {
             new ISOMsg("testISOMsgMti").getKey();
             fail("Expected ISOException to be thrown");
-        } catch (ISOException ex) {
+        } catch (IllegalStateException ex) {
             assertEquals("ex.getMessage()", "This is not a subField", ex.getMessage());
-            assertNull("ex.nested", ex.nested);
+            assertNull("ex.nested", ex.getCause());
         }
     }
 
@@ -1097,9 +1097,9 @@ public class ISOMsg2Test {
         try {
             iSOMsg.set(new ISOMsg());
             fail("Expected ISOException to be thrown");
-        } catch (ISOException ex) {
+        } catch (IllegalStateException ex) {
             assertEquals("ex.getMessage()", "This is not a subField", ex.getMessage());
-            assertNull("ex.nested", ex.nested);
+            assertNull("ex.nested", ex.getCause());
             assertEquals("iSOMsg.fields.size()", 0, iSOMsg.fields.size());
             assertEquals("iSOMsg.maxField", -1, iSOMsg.maxField);
             assertTrue("iSOMsg.dirty", iSOMsg.dirty);

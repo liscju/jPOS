@@ -85,7 +85,7 @@ public class ISOMsgRef {
         }
 
         @Override
-        public Object getKey() throws ISOException {
+        public Object getKey() {
             return fieldNumber;
         }
 

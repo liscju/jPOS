@@ -72,10 +72,10 @@ public abstract class ISOComponent implements Cloneable {
      * to this field.
      *
      * @return object representing the field number
-     * @exception ISOException
+     * @exception IllegalStateException when object is composite
      */
-    public Object getKey() throws ISOException {
-        throw new ISOException ("N/A in Composite");
+    public Object getKey() throws IllegalStateException {
+        throw new IllegalStateException ("N/A in Composite");
     }
     /**
      * valid on Leafs only.

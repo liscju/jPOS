@@ -98,7 +98,7 @@ public class ISOTaggedField extends ISOComponent {
 
 
     @Override
-    public Object getKey() throws ISOException {
+    public Object getKey() throws IllegalStateException {
         return delegate.getKey();
     }
 
